@@ -28,12 +28,22 @@ class _LoginScreenState extends State<LoginScreen> {
   final RegExp passwordregex = RegExp(
       r'^\S*(?=\S{6,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$');
 
+  //focus text controler
+  FocusNode _logintextfocus = FocusNode();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
   //dispose
   @override
   void dispose() {
     // TODO: implement dispose
 
     email.dispose();
+
     passcode.dispose();
     super.dispose();
   }
@@ -91,6 +101,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       // email.text = '';
       // passcode.text = '';
+
       Get.snackbar(
         "Success",
         "Login Successful",
@@ -317,6 +328,11 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             child: TextField(
                               controller: email,
+                              autofocus: true,
+                              onSubmitted: (value) {
+                                //FocusScope.of(context).requestFocus();
+                                _logintextfocus.requestFocus();
+                              },
                               decoration: InputDecoration(
                                 hintText: 'Email Id',
                                 hintStyle: GoogleFonts.poppins(
@@ -357,6 +373,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: TextField(
                               controller: passcode,
                               keyboardType: TextInputType.text,
+                              focusNode: _logintextfocus,
+                              onSubmitted: (value) => Loginvalidation(),
                               obscureText: _isVisible,
                               decoration: InputDecoration(
                                 hintText: 'Passcode',
