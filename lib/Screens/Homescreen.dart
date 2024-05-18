@@ -119,7 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   //overlat timer
   void overlaytimer() {
-    Timer.periodic(Duration(seconds: 5), (timer) => _showOverlay());
+    Timer.periodic(Duration(minutes: 10), (timer) => _showOverlay());
   }
 
   //overlay
@@ -1078,232 +1078,224 @@ class _HomeScreenState extends State<HomeScreen> {
                                 SizedBox(
                                   height: 15,
                                 ),
-                                Container(
-                                  height: Get.height * 0.5,
-                                  child: Expanded(
-                                    child: ListView.builder(
-                                      scrollDirection: Axis.vertical,
-                                      itemCount: tasks.length,
-                                      itemBuilder: (context, index) {
-                                        return Container(
-                                          margin: EdgeInsets.only(bottom: 10),
-                                          decoration: ShapeDecoration(
-                                            color: HexColor("F7F7F7"),
-                                            shape: RoundedRectangleBorder(
-                                              side: BorderSide(
-                                                width: 1.50,
-                                                color: Colors.black.withOpacity(
-                                                    0.17000000178813934),
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
+                                Expanded(
+                                  flex: 1,
+                                  child: ListView.builder(
+                                    scrollDirection: Axis.vertical,
+                                    itemCount: tasks.length,
+                                    itemBuilder: (context, index) {
+                                      return Container(
+                                        margin: EdgeInsets.only(bottom: 10),
+                                        decoration: ShapeDecoration(
+                                          color: HexColor("F7F7F7"),
+                                          shape: RoundedRectangleBorder(
+                                            side: BorderSide(
+                                              width: 1.50,
+                                              color: Colors.black.withOpacity(
+                                                  0.17000000178813934),
                                             ),
+                                            borderRadius:
+                                                BorderRadius.circular(10),
                                           ),
-                                          padding: EdgeInsets.all(8),
-                                          width: Get.width * 0.4,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Container(
-                                                    width: Get.width * 0.2,
-                                                    height: 30,
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          HexColor("#690ABF"),
-                                                      gradient: LinearGradient(
-                                                          colors: [
-                                                            HexColor("#690ABF"),
-                                                            HexColor("#690ABF")
-                                                                .withOpacity(
-                                                                    0.8),
-                                                            HexColor("#690ABF")
-                                                                .withOpacity(
-                                                                    0.6),
-                                                            HexColor("#690ABF")
-                                                                .withOpacity(
-                                                                    0.4),
-                                                            HexColor("#690ABF")
-                                                                .withOpacity(
-                                                                    0.2),
-                                                          ]),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              4),
-                                                    ),
-                                                    child: Center(
-                                                      child: Text(
-                                                        tasks[index].name,
-                                                        style:
-                                                            GoogleFonts.poppins(
-                                                          fontSize: 15,
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.white,
-                                                        ),
+                                        ),
+                                        padding: EdgeInsets.all(8),
+                                        width: Get.width * 0.4,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
+                                              children: [
+                                                Container(
+                                                  width: Get.width * 0.2,
+                                                  height: 30,
+                                                  decoration: BoxDecoration(
+                                                    color: HexColor("#690ABF"),
+                                                    gradient:
+                                                        LinearGradient(colors: [
+                                                      HexColor("#690ABF"),
+                                                      HexColor("#690ABF")
+                                                          .withOpacity(0.8),
+                                                      HexColor("#690ABF")
+                                                          .withOpacity(0.6),
+                                                      HexColor("#690ABF")
+                                                          .withOpacity(0.4),
+                                                      HexColor("#690ABF")
+                                                          .withOpacity(0.2),
+                                                    ]),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            4),
+                                                  ),
+                                                  child: Center(
+                                                    child: Text(
+                                                      tasks[index].name,
+                                                      style:
+                                                          GoogleFonts.poppins(
+                                                        fontSize: 15,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Colors.white,
                                                       ),
                                                     ),
                                                   ),
-                                                  SizedBox(
-                                                    width: 190,
-                                                  ),
-                                                  tasks[index].status ==
-                                                          "Active"
-                                                      ? Container(
-                                                          width:
-                                                              Get.width * 0.06,
-                                                          height: 30,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5),
-                                                            color: HexColor(
-                                                                "#18D952"),
-                                                          ),
-                                                          child: Center(
-                                                            child: Text(
-                                                              "Active",
-                                                              style: GoogleFonts
-                                                                  .poppins(
-                                                                fontSize: 15,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
+                                                ),
+                                                SizedBox(
+                                                  width: 190,
+                                                ),
+                                                tasks[index].status == "Active"
+                                                    ? Container(
+                                                        width: Get.width * 0.06,
+                                                        height: 30,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(5),
+                                                          color: HexColor(
+                                                              "#18D952"),
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            "Active",
+                                                            style: GoogleFonts
+                                                                .poppins(
+                                                              fontSize: 15,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w500,
+                                                              color:
+                                                                  Colors.white,
                                                             ),
                                                           ),
-                                                        )
-                                                      : tasks[index]
-                                                              .status
-                                                              .contains(
-                                                                  "Completed")
-                                                          ? Container(
-                                                              width: Get.width *
-                                                                  0.06,
-                                                              height: 30,
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            5),
-                                                                color:
-                                                                    Colors.teal,
-                                                              ),
-                                                              child: Center(
-                                                                child: Text(
-                                                                  "Completed",
-                                                                  style: GoogleFonts
-                                                                      .poppins(
-                                                                    fontSize:
-                                                                        15,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w500,
-                                                                    color: Colors
-                                                                        .white,
-                                                                  ),
+                                                        ),
+                                                      )
+                                                    : tasks[index]
+                                                            .status
+                                                            .contains(
+                                                                "Completed")
+                                                        ? Container(
+                                                            width: Get.width *
+                                                                0.06,
+                                                            height: 30,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5),
+                                                              color:
+                                                                  Colors.teal,
+                                                            ),
+                                                            child: Center(
+                                                              child: Text(
+                                                                "Completed",
+                                                                style:
+                                                                    GoogleFonts
+                                                                        .poppins(
+                                                                  fontSize: 15,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w500,
+                                                                  color: Colors
+                                                                      .white,
                                                                 ),
                                                               ),
-                                                            )
-                                                          : tasks[index]
-                                                                      .status ==
-                                                                  "Idle"
-                                                              ? Container(
-                                                                  width:
-                                                                      Get.width *
-                                                                          0.06,
-                                                                  height: 30,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    color: Colors
-                                                                        .cyan,
-                                                                  ),
-                                                                  child: Center(
-                                                                    child: Text(
-                                                                      "Idle",
-                                                                      style: GoogleFonts
-                                                                          .poppins(
-                                                                        fontSize:
-                                                                            15,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                )
-                                                              : Container(
-                                                                  width:
-                                                                      Get.width *
-                                                                          0.06,
-                                                                  height: 30,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    borderRadius:
-                                                                        BorderRadius
-                                                                            .circular(5),
-                                                                    color: Color
-                                                                        .fromARGB(
-                                                                            255,
-                                                                            180,
-                                                                            4,
-                                                                            4),
-                                                                  ),
-                                                                  child: Center(
-                                                                    child: Text(
-                                                                      "InActive",
-                                                                      style: GoogleFonts
-                                                                          .poppins(
-                                                                        fontSize:
-                                                                            15,
-                                                                        fontWeight:
-                                                                            FontWeight.w500,
-                                                                        color: Colors
-                                                                            .white,
-                                                                      ),
+                                                            ),
+                                                          )
+                                                        : tasks[index].status ==
+                                                                "Idle"
+                                                            ? Container(
+                                                                width:
+                                                                    Get.width *
+                                                                        0.06,
+                                                                height: 30,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  color: Colors
+                                                                      .cyan,
+                                                                ),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    "Idle",
+                                                                    style: GoogleFonts
+                                                                        .poppins(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      color: Colors
+                                                                          .white,
                                                                     ),
                                                                   ),
                                                                 ),
-                                                ],
+                                                              )
+                                                            : Container(
+                                                                width:
+                                                                    Get.width *
+                                                                        0.06,
+                                                                height: 30,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              5),
+                                                                  color: Color
+                                                                      .fromARGB(
+                                                                          255,
+                                                                          180,
+                                                                          4,
+                                                                          4),
+                                                                ),
+                                                                child: Center(
+                                                                  child: Text(
+                                                                    "InActive",
+                                                                    style: GoogleFonts
+                                                                        .poppins(
+                                                                      fontSize:
+                                                                          15,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      color: Colors
+                                                                          .white,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: 16,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 8.0,
+                                                  bottom: 8,
+                                                  left: 8,
+                                                  right: 20),
+                                              child: Text(
+                                                tasks[index].description,
+                                                style: GoogleFonts.poppins(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Colors.black),
                                               ),
-                                              SizedBox(
-                                                height: 16,
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    top: 8.0,
-                                                    bottom: 8,
-                                                    left: 8,
-                                                    right: 20),
-                                                child: Text(
-                                                  tasks[index].description,
-                                                  style: GoogleFonts.poppins(
-                                                      fontSize: 14,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Colors.black),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    },
                                   ),
                                 ),
                               ],
